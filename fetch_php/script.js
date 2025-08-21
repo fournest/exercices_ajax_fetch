@@ -1,27 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const loadUsersButton = document.getElementById('loadProducts');
-    const userList = document.getElementById('productList');
+    const loadProductsButton = document.getElementById('loadProducts');
+    const productList = document.getElementById('productList');
 
-    loadUsersButton.addEventListener('click', () => {
-        fetch('product.php')
+    loadProductsButton.addEventListener('click', () => {
+        fetch('products.php')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erreur de réseau ou de serveur.');
                 }
                 return response.json();
             })
-            .then(users => {
-                userList.innerHTML = ''; 
+            .then(products => {
+                productList.innerHTML = ''; 
                 
-                users.forEach(user => {
+                products.forEach(product => {
                     const listItem = document.createElement('li');
-                    listItem.textContent = user.name;
-                    userList.appendChild(listItem);
+                    listItem.textContent = `${product.name} - ${product.firstName} * ${product.nickName}`;
+                    productList.appendChild(listItem);
                 });
             })
             .catch(error => {
                 console.error('Il y a eu un problème avec l\'opération fetch :', error);
-                userList.innerHTML = '<li>Erreur lors du chargement des produits. Veuillez réessayer.</li>';
+                productList.innerHTML = '<li>Erreur lors du chargement des produits. Veuillez réessayer.</li>';
             });
     });
 });
