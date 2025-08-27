@@ -9,7 +9,7 @@
 // ];
 
 $host = 'localhost';
-$dbname = 'tutoblogsymfony'; 
+$dbname = 'mini-twitter'; 
 $username = 'root'; 
 $password = ''; 
 
@@ -22,7 +22,7 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // 3. Préparer et exécuter la requête SQL
-    $sql = "SELECT title, content FROM article"; 
+    $sql = "SELECT name FROM user"; 
     $stmt = $pdo->query($sql);
 
     // 4. Récupérer tous les résultats sous forme de tableau associatif
